@@ -8,15 +8,15 @@ import java.io.*;
 
 class sortingUniqueString{
 
-static class couple
+static class pair
 {
-	int old;
-	String new;
+	int first;
+	String second;
 	
-	couple(int old,String new)
+	pair(int first,String second)
 	{
-		this.old = old;
-		this.new = new;
+		this.first = first;
+		this.second = second;
 	}
 }
 
@@ -30,7 +30,7 @@ static boolean isVowel(char ch)
 }
 
 
-static int countV(String str)
+static int countVowels(String str)
 {
 	int count = 0;
 	for(int i = 0; i < str.length(); i++)
@@ -44,21 +44,21 @@ static void sortArr(String arr[], int n)
 {
 	
 	
-	ArrayList<couple> vp = new ArrayList<>();
+	ArrayList<pair> vp = new ArrayList<>();
 
 	
 	for(int i = 0; i < n; i++)
 	{
-		vp.add(new couple(countV(arr[i]),
+		vp.add(new pair(countVowels(arr[i]),
 									arr[i]));
 	}
 
 
-	Collections.sort(vp, (a, b) -> a.old - b.old);
+	Collections.sort(vp, (a, b) -> a.first - b.first);
 	
 
 	for(int i = 0; i < vp.size(); i++)
-		System.out.print(vp.get(i).new + " ");
+		System.out.print(vp.get(i).second + " ");
 }
 
 
